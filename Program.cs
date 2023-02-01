@@ -35,7 +35,7 @@ namespace Fujjifilm
 
             app.UseAuthorization();
 
-            //Users
+            //End-Points --> Users
             app.MapPost("/users/", async (User e, fujjiDb db) =>
             {
                 db.Users.Add(e);
@@ -52,7 +52,37 @@ namespace Fujjifilm
                 : Results.NotFound();
             });
 
-            //Products
+            app.MapGet("/users", async (fujjiDb db) => await db.Users.ToListAsync());
+
+            app.MapPut("/users/{id:int}", async (int id, User e, fujjiDb db) =>
+            {
+                if (e.IdUser != id) return Results.BadRequest();
+                var user = await db.Users.FindAsync(id);
+
+                if (user is null) return Results.NotFound();
+
+                user.Name = e.Name;
+                user.LastName = e.LastName;
+                user.DayOfBirth = e.DayOfBirth;
+                user.Telephone = e.Telephone;
+                user.Status = e.Status;
+
+                await db.SaveChangesAsync();
+                return Results.Ok(user);
+                
+            });
+
+            app.MapDelete("/users/{id:int}", async (int id, fujjiDb db) =>
+            {
+                var user = await db.Users.FindAsync(id);
+                if(user is null) return Results.NotFound();
+                db.Users.Remove(user);
+                await db.SaveChangesAsync();
+
+                return Results.NoContent();
+            });
+
+            //End-Points --> Products
             app.MapPost("/products/", async (Product e, fujjiDb db) =>
             {
                 db.Products.Add(e);
@@ -67,6 +97,36 @@ namespace Fujjifilm
                 is Product e
                 ? Results.Ok(e)
                 : Results.NotFound();
+            });
+
+            app.MapGet("/products", async (fujjiDb db) => await db.Products.ToListAsync());
+
+            app.MapPut("/products/{id:int}", async (int id, Product e, fujjiDb db) =>
+            {
+                if(e.IdProduct != id) return Results.BadRequest();
+                var product = await db.Products.FindAsync(id);
+
+                if(product is null) return Results.NotFound();
+
+                product.CodeProduct = e.CodeProduct;
+                product.Name = e.Name;
+                product.Price = e.Price;
+                product.DischargeDate = e.DischargeDate;
+                product.Status = e.Status;
+                product.TypeProduct = e.TypeProduct;
+                product.IdUser = e.IdUser;
+
+                await db.SaveChangesAsync();
+                return Results.Ok(product);
+            });
+
+            app.MapDelete("/products/{id:int}", async (int id, fujjiDb db) =>
+            {
+                var product = await db.Products.FindAsync(id);
+                if(product is null) return Results.NotFound();
+                db.Products.Remove(product);
+
+                return Results.NoContent();
             });
             //.WithOpenApi();
 

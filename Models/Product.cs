@@ -8,11 +8,11 @@ namespace Fujjifilm.Models
     {
         [Key]
         public int IdProduct { get; set; }
-        public int CodeProduct { get; set; }
+        public string CodeProduct { get; set; }
         public string Name { get; set; }
-        public int Price { get; set; }
-        public string DischargeDate { get; set; }
-        public string Status { get; set; }
+        public double Price { get; set; }
+        public DateTime DischargeDate { get; set; } = DateTime.Now;
+        public bool Status { get; set; }
         public string TypeProduct { get; set; }
 
         [ForeignKey("User")]

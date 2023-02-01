@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -19,6 +20,7 @@ namespace Fujjifilm.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false),
                     DayOfBirth = table.Column<string>(type: "text", nullable: false),
                     Telephone = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<bool>(type: "boolean", nullable: false)
@@ -34,11 +36,11 @@ namespace Fujjifilm.Migrations
                 {
                     IdProduct = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CodeProduct = table.Column<int>(type: "integer", nullable: false),
+                    CodeProduct = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Price = table.Column<int>(type: "integer", nullable: false),
-                    DischargeDate = table.Column<string>(type: "text", nullable: false),
-                    Status = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<double>(type: "double precision", nullable: false),
+                    DischargeDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Status = table.Column<bool>(type: "boolean", nullable: false),
                     TypeProduct = table.Column<string>(type: "text", nullable: false),
                     IdUser = table.Column<int>(type: "integer", nullable: false)
                 },
