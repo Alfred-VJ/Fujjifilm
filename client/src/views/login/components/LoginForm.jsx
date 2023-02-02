@@ -8,12 +8,12 @@ import  {useNavigate} from 'react-router-dom';
 const LoginForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {user} = useSelector(state => state.usersReducer)
+    const { user } = useSelector(state => state.usersReducer)
     const [userInput, setUserInput] = useState({
         Name: "",
         Password: "",
     });
-    console.log(user)
+
     useEffect(() => {
         if(user.password === userInput.Password){
             navigate('/products')
@@ -32,6 +32,8 @@ const LoginForm = () => {
     };
 
     return (
+        <div>
+            <h2 className='title'>Inicia Sesión</h2>
         <Form className="form_register" onSubmit={handleSubmit}>
             <Form.Group controlId="formUsername">
                 <Form.Label className="label_form_register">Nombre de usuario</Form.Label>
@@ -53,12 +55,13 @@ const LoginForm = () => {
                     value={userInput.Password}
                     onChange={(e) => handleChange(e)}
                     className="control_form_register"
-                />
+                    />
             </Form.Group>
             <Button className="mt-4 btn_register" variant="info" type="submit">
                 Iniciar sesión
             </Button>
         </Form>
+        </div>
     )
 }
 

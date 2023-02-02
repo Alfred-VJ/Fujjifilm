@@ -35,6 +35,8 @@ const RegisterForm = () => {
 
 
     return (
+        <div>
+            <h2 className='title'>Registrate</h2>
         <Form className="form_register" onSubmit={(e) => handleSubmit(e)}>
             <Form.Group controlId="formName">
                 <Form.Label className="label_form_register">Nombre</Form.Label>
@@ -45,7 +47,7 @@ const RegisterForm = () => {
                     value={userInput.Name}
                     onChange={(e) => handleChange(e)}
                     className="control_form_register"
-                />
+                    />
             </Form.Group>
 
             <Form.Group controlId="formLastName">
@@ -57,7 +59,7 @@ const RegisterForm = () => {
                     value={userInput.LastName}
                     onChange={(e) => handleChange(e)}
                     className="control_form_register"
-                />
+                    />
             </Form.Group>
 
             <Form.Group controlId="formBirthdate">
@@ -80,7 +82,7 @@ const RegisterForm = () => {
                     name="Password"
                     onChange={(e) => handleChange(e)}
                     className="control_form_register"
-                />
+                    />
             </Form.Group>
 
             <Form.Group controlId="formPhone">
@@ -92,13 +94,14 @@ const RegisterForm = () => {
                     name="Telephone"
                     onChange={(e) => handleChange(e)}
                     className="control_form_register"
-                />
+                    />
             </Form.Group>
 
             <Button className="mt-4 btn_register" variant="info" type="submit">
                 Registrar
             </Button>
         </Form>
+        </div>
     );
 };
 

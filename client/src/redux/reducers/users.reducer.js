@@ -6,6 +6,7 @@ import {
     DELETE_USER,
     GET_USER_NAME,
     OFFLINE,
+    ERROR_SESION,
 } from '../actions/actions.types'
 
 const initialState = {

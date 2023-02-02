@@ -8,7 +8,7 @@ const TableProducts = () => {
     const dispatch = useDispatch();
     const { products } = useSelector(state => state.productsReducer);
     const { users } = useSelector(state => state.usersReducer);
-    console.log({ products })
+   
     useEffect(() => {
         dispatch(actionsProducts.getAllProducts())
         dispatch(actionsUsers.getAllUsers())
@@ -23,7 +23,9 @@ const TableProducts = () => {
 
     return (
         <>
-            {products.length ? <Table striped bordered hover variant="dark">
+            {products.length ? <>
+                <h2 className='title'>Lista de todos los productos</h2>
+                <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th className='th_title'>Código</th>
@@ -49,9 +51,10 @@ const TableProducts = () => {
                         </tr>
                     ))
 
-                    }
+                        }
                 </tbody>
-            </Table> :
+                </Table>
+            </> :
                 <div className='content_mns'>
                     <div className='mns_no_products'>No hay productos en el inventario</div>
                 </div>

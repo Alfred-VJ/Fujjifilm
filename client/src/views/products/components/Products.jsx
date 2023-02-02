@@ -22,6 +22,7 @@ const Products = () => {
                         <NavProducts />
                     </div>
                     <div className='table_products'>
+                        <h2 className='title'>Inventario de productos</h2>
                         {createProduct ? <CreateProduct /> :
                             modificProduct ? <ModificProduct /> :
                                 deleteProduct ? <DeleteProduct /> :

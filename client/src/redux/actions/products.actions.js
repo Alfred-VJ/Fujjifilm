@@ -51,7 +51,6 @@ const createProduct = (product) => {//https://localhost:7243/products
 
 const updateProduct = (id, product) => {//https://localhost:7243/products/1
     return async dispatch => {
-        console.log({id, product})
         try {
             const {data } = await axios.put(`https://localhost:7243/products/${id}`, product);
             return dispatch({

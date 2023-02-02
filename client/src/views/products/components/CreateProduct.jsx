@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actionsProducts } from "../../../redux/actions/products.actions";
+import { actionsOptionsProducts } from "../../../redux/actions";
 import { Form, Button } from "react-bootstrap";
 
 const CreateProduct = () => {
     const dispatch = useDispatch();
+    const [activate, setActivate] = useState(false);
     const { user } = useSelector(state => state.usersReducer);
     const [productInput, setProductInput] = useState({
         Name: "",
@@ -12,7 +14,7 @@ const CreateProduct = () => {
         Price: 0,
         Status: "",
         TypeProduct: "",
-        IdUser: user.IdUser || 1
+        IdUser: user.idUser
     });
 
 
@@ -22,6 +24,7 @@ const CreateProduct = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setActivate(true)
         const date = new Date();
         const formattedDate = date.toISOString();
         let prd = { ...productInput, DischargeDate: formattedDate }
@@ -32,8 +35,13 @@ const CreateProduct = () => {
         }
 
         dispatch(actionsProducts.createProduct(prd));
+        setTimeout(() => {
+            dispatch(actionsOptionsProducts.allProducts());
+        }, 1000)
     }
     return (
+        <div>
+            <h2 className='title'>Crea un producto nuevo</h2>
         <Form className="form_register" onSubmit={(e) => handleSubmit(e)}>
             <Form.Group controlId="formCode">
                 <Form.Label className="label_form_register">Código del producto</Form.Label>
@@ -68,7 +76,7 @@ const CreateProduct = () => {
                     value={productInput.Price}
                     onChange={(e) => handleChange(e)}
                     className="control_form_register"
-                />
+                    />
             </Form.Group>
 
             <Form.Group controlId="formStatus">
@@ -92,10 +100,11 @@ const CreateProduct = () => {
                 />
             </Form.Group>
 
-            <Button className="mt-4 btn_register" variant="info" type="submit">
+            <Button disabled={activate} className="mt-4 btn_register" variant="info" type="submit">
                 Registrar Producto
             </Button>
         </Form>
+        </div>
     )
 }
 

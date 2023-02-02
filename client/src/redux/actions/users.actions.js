@@ -42,12 +42,15 @@ const getUserByName = (name, password) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`https://localhost:7243/users/name?name=${name}`);
+            console.log({ data }, "888888888888888888888888888")
             return dispatch({
                 type: GET_USER_NAME,
                 payload: data
             })
         } catch (error) {
-            console.error(error);
+            errorMan();
+            console.error(error, "Error al iniciar sesion");
+            
         }
     }
 }
@@ -96,6 +99,10 @@ const updateUser = (id, user) => {
 
 const offLine = () => {
     return { type: OFFLINE }
+}
+
+const errorMan = () => {
+    alert("Ocurrio un error asegurate que tus datos estan correctos, si el problema persiste contacta a un administrador");
 }
 
 export const actionsUsers = {

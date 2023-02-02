@@ -2,10 +2,12 @@ import {useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionsProducts } from '../../../redux/actions';
+import { actionsOptionsProducts } from '../../../redux/actions';
 
 
 const ModificProduct = () => {
     const { products } = useSelector(state => state.productsReducer);
+    const [activate, setActivate] = useState(false);
     const [selectedOption, setSelectedOption] = useState({});
     const [idPro, setIdPro] = useState(0)
     const dispatch = useDispatch();
@@ -20,9 +22,6 @@ const ModificProduct = () => {
         IdUser: user.IdUser || 1
     });
 
-    console.log({idPro})
-    console.table(productInput)
-
     const handleChangeF = (e) => {
         products.map(p => p.name === e.target.value && (setSelectedOption(p)))
         products.map(p => p.name === e.target.value && (setIdPro(p.idProduct)))
@@ -31,6 +30,7 @@ const ModificProduct = () => {
 
       const handleSubmit = async (event) => {
         event.preventDefault();
+        setActivate(true)
         const date = new Date();
         const formattedDate = date.toISOString();
         let prd = { ...productInput, DischargeDate: formattedDate, IdProduct: idPro }
@@ -40,8 +40,10 @@ const ModificProduct = () => {
             prd = { ...prd, Status: true }
         }
 
-        console.log(idPro)
         dispatch(actionsProducts.updateProduct(idPro, prd));
+        setTimeout(()=>{
+            dispatch(actionsOptionsProducts.allProducts());
+           }, 1000)
     }
 
     const handleChange = (event) => {
@@ -50,6 +52,7 @@ const ModificProduct = () => {
 
     return (
         <div>
+            <h2 className='title'>Modifica tu poducto</h2>
             <Form.Group controlId="formExample">
                 <Form.Label>Elige el producto que necesita modificación</Form.Label>
                 <Form.Control as="select" value={selectedOption.name} onChange={handleChangeF}>
@@ -120,7 +123,7 @@ const ModificProduct = () => {
                 />
             </Form.Group>
 
-            <Button className="mt-4 btn_register" variant="info" type="submit">
+            <Button disabled={activate} className="mt-4 btn_register" variant="info" type="submit">
                 Registrar Producto
             </Button>
         </Form>
