@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&display=swap');
+
+.logo_navbar{
+    width: 22%;
+    border-radius: 15px;
+}
+
+.navbar{
+    font-family: 'Kanit', sans-serif;
+    font-size: 125%;
+}
+
+.nav-link{
+    margin-right: 55px;
+}

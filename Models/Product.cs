@@ -7,6 +7,7 @@ namespace Fujjifilm.Models
     public class Product
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdProduct { get; set; }
         public string CodeProduct { get; set; }
         public string Name { get; set; }

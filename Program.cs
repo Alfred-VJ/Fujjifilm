@@ -3,6 +3,7 @@ using Fujjifilm.Data;
 using Microsoft.EntityFrameworkCore;
 using Fujjifilm.Models;
 
+
 namespace Fujjifilm
 {
     public class Program
@@ -22,6 +23,17 @@ namespace Fujjifilm
             builder.Services.AddDbContext<fujjiDb>(options =>
             options.UseNpgsql(connectionString));
 
+            //cors
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("NuevaPolitica", app =>
+                {
+                    app.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -31,7 +43,10 @@ namespace Fujjifilm
                 app.UseSwaggerUI();
             }
 
+
             app.UseHttpsRedirection();
+
+            app.UseCors("NuevaPolitica");
 
             app.UseAuthorization();
 
@@ -51,6 +66,15 @@ namespace Fujjifilm
                 ? Results.Ok(e)
                 : Results.NotFound();
             });
+
+            app.MapGet("/users/name", async (string name, fujjiDb db) =>
+            {
+                var user = await db.Users.FirstOrDefaultAsync(user => user.Name == name);
+                return user != null
+                    ? Results.Ok(user)
+                    : Results.NotFound();
+            });
+
 
             app.MapGet("/users", async (fujjiDb db) => await db.Users.ToListAsync());
 
@@ -125,6 +149,7 @@ namespace Fujjifilm
                 var product = await db.Products.FindAsync(id);
                 if(product is null) return Results.NotFound();
                 db.Products.Remove(product);
+                await db.SaveChangesAsync();
 
                 return Results.NoContent();
             });

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&display=swap');
+
+.contenedor_products{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_products{
+}
+
+.table_products{
+    width: 80%;
+    margin: 2%;
+}
+
+.side-nav {
+    margin-top: 10%;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+  
+  .side-nav div {
+    display: block;
+    padding: 10px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 105%;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .side-nav div:hover {
+    background-color: rgb(115, 255, 208);
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .side-item{
+    background: rgba(243, 243, 243, 0.562);
+  }
+
+  .th_title{
+    font-family: 'Kanit', sans-serif;
+    font-size: 105%;
+  }
+
+  .content_mns{
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+  }
+  .mns_no_products{
+    font-family: 'Kanit', sans-serif;
+    font-size: 155%;
+  }
+
+  .card_delete{
+    background: rgba(5, 5, 5, 0.849);
+    color: aliceblue;
+    margin-top: 5%;
+  }
+
+  .btn_delete{
+    width: 100%;
+    padding: 1% 0;
+  }
+  

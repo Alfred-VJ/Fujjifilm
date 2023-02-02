@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Fujjifilm.Migrations
 {
     [DbContext(typeof(fujjiDb))]
-    [Migration("20230201232604_firstmigration")]
+    [Migration("20230202122410_firstmigration")]
     partial class firstmigration
     {
         /// <inheritdoc />

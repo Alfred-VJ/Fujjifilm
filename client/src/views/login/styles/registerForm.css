@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&display=swap');
+
+.form_register {
+    margin: 2% 20%;
+    padding: 2%;
+    background: rgba(13, 13, 14, 0.849);
+
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.btn_register {
+    width: 100%;
+    color: aliceblue;
+    font-size: larger;
+    padding: 1.5% 0;
+    font-family: 'Kanit', sans-serif;
+    font-size: 125%;
+}
+
+.label_form_register {
+    color: aliceblue;
+    font-family: 'Kanit', sans-serif;
+    font-size: 125%;
+    margin-top: 2%;
+}
+
+.control_form_register {
+    background: rgb(255, 255, 255);
+    height: 6vh;
+    font-family: 'Kanit', sans-serif;
+    font-size: 125%;
+}
