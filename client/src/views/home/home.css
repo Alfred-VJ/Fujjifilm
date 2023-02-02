@@ -6,10 +6,25 @@
   }
   
   .gradient-title {
-    background: linear-gradient(to right, #ff5f6d, #ffc371);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-size: 48px;
-    
+    padding: 10%;
+    border-radius: 15px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.647);
+    position: relative;
   }
+  
+  .gradient-title::before {
+    content: "";
+    position: absolute;
+    border-radius: 15px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #133a5e, #370c8d);
+    z-index: -1;
+  }
+  
+  
   
