@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import { actionsProducts } from '../../../redux/actions/index'
@@ -8,11 +8,29 @@ const TableProducts = () => {
     const dispatch = useDispatch();
     const { products } = useSelector(state => state.productsReducer);
     const { users } = useSelector(state => state.usersReducer);
+    const [page, setPage] = useState(1);
+    const [size, setSize] = useState(4);
    
     useEffect(() => {
-        dispatch(actionsProducts.getAllProducts())
+        dispatch(actionsProducts.getAllProducts(page, size))
         dispatch(actionsUsers.getAllUsers())
     }, [])
+
+    useEffect(() => {
+        dispatch(actionsProducts.getAllProducts(page, size))
+    }, [page])
+
+    const changePage = (option) => {
+        if(option){
+            if(page > 1){
+                setPage(page - 1);
+            } 
+        }else{
+            if(products.length){
+                setPage(page + 1)
+            }
+        } 
+    }
 
     const dateForma = (dateString) => {
         const date = new Date(dateString);
@@ -25,6 +43,10 @@ const TableProducts = () => {
         <>
             {products.length ? <>
                 <h2 className='title'>Lista de todos los productos</h2>
+                <div className='btn_pagination'>
+                <button onClick={() => changePage(true)}>{"<<"}</button>
+                <button onClick={() => changePage(false)}>{">>"}</button>
+                </div>
                 <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>

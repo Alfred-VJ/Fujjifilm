@@ -67,4 +67,20 @@
     width: 100%;
     padding: 1% 0;
   }
+
+  .btn_pagination{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+
+  .btn_pagination button{
+    background: rgba(0, 0, 0, 0.863);
+    color: rgb(255, 255, 255);
+    font-family: 'Kanit', sans-serif;
+    font-size: 155%;
+    padding: 0 2%;
+    margin-bottom: 1%;
+  }
+
   

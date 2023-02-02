@@ -123,7 +123,11 @@ namespace Fujjifilm
                 : Results.NotFound();
             });
 
-            app.MapGet("/products", async (fujjiDb db) => await db.Products.ToListAsync());
+            app.MapGet("/products/{pageNumber}/{pageSize}", async (fujjiDb db, int pageNumber, int pageSize) => 
+            await db.Products
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync());
 
             app.MapPut("/products/{id:int}", async (int id, Product e, fujjiDb db) =>
             {

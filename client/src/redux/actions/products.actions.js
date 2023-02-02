@@ -7,10 +7,25 @@ import {
     UPDATE_PRODUCT
 } from './actions.types';
 
-const getAllProducts = () => {//https://localhost:7243/products
+// const getAllProducts = () => {//https://localhost:7243/products
+//     return async dispatch => {
+//         try {
+//             const {data} = await axios.get('https://localhost:7243/products');
+//             return dispatch({
+//                 type: GET_ALL_PRODUCTS,
+//                 payload: data,
+//             })
+//         } catch (error) {
+//             console.error(error);
+//         }
+//     }
+// }
+
+
+const getAllProducts = (pageNumber, pageSize) => {
     return async dispatch => {
         try {
-            const {data} = await axios.get('https://localhost:7243/products');
+            const {data} = await axios.get(`https://localhost:7243/products/${pageNumber}/${pageSize}`);
             return dispatch({
                 type: GET_ALL_PRODUCTS,
                 payload: data,

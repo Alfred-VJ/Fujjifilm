@@ -38,11 +38,10 @@ const getUserById = (id) => {
     }
 }
 
-const getUserByName = (name, password) => {
+const getUserByName = (name) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`https://localhost:7243/users/name?name=${name}`);
-            console.log({ data }, "888888888888888888888888888")
             return dispatch({
                 type: GET_USER_NAME,
                 payload: data
