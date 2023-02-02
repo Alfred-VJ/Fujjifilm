@@ -8,8 +8,8 @@ La API también registrará y almacenará información de usuarios que accedan a
 la interfaz de usuario con funcionalidades incluyendo una página de inicio de sesión y la recuperación de información de la API para ser mostrada en pantalla.
 
 ![Demostración de la imagen](client/src/assets/img1.png)
-![Demostración de la imagen](client/src/assets/img7.png)
 ![Demostración de la imagen](client/src/assets/img2.png)
+![Demostración de la imagen](client/src/assets/img7.png)
 ![Demostración de la imagen](client/src/assets/img3.png)
 ![Demostración de la imagen](client/src/assets/img4.png)
 ![Demostración de la imagen](client/src/assets/img5.png)
