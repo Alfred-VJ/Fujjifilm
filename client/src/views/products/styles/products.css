@@ -14,11 +14,11 @@
 }
 
 .side-nav {
-    margin-top: 10%;
+    margin-top: 60%;
     left: 0;
     bottom: 0;
     width: 250px;
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0px 10px rgb(10, 10, 10);
     overflow-y: auto;
   }
   
@@ -27,18 +27,18 @@
     padding: 10px;
     font-family: 'Kanit', sans-serif;
     font-size: 105%;
-    color: black;
+    color: rgba(0, 0, 0, 0.884);
     text-decoration: none;
   }
   
   .side-nav div:hover {
-    background-color: rgb(115, 255, 208);
+    background-color: rgba(0, 168, 146, 0.644);
     border-radius: 20px;
     cursor: pointer;
   }
 
   .side-item{
-    background: rgba(243, 243, 243, 0.562);
+    background: rgba(243, 243, 243, 0.308);
   }
 
   .th_title{
@@ -81,6 +81,22 @@
     font-size: 155%;
     padding: 0 2%;
     margin-bottom: 1%;
+  }
+
+  .conten_drop{
+    width: 100%;
+  }
+  .num_page{
+    background: rgb(30, 30, 31);
+    color: aliceblue;
+    font-family: 'Kanit', sans-serif;
+    padding: 0 2%;
+    margin-bottom: 1%;
+    text-align: center;
+  }
+
+  .td_Product{
+    cursor: pointer;
   }
 
   

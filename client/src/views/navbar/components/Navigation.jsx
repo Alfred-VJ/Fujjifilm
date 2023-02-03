@@ -30,12 +30,16 @@ const Navigation = () => {
                   Cerrar sesión
                 </Link>
             }
-            <Link to="/register" className="nav-link">
-              Registrarse
-            </Link>
             <Link to="/products" className="nav-link">
               Productos
             </Link>
+            {!user.name ? <Link to="/register" className="nav-link">
+              Registrarse
+            </Link> :
+              <div className="nav-link">
+                {user.name}
+              </div>
+            }
           </Nav>
         </Navbar.Collapse>
       </Container>

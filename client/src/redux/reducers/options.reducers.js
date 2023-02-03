@@ -5,6 +5,7 @@ const initialState = {
     deleteProduct: false,
     modificProduct: false,
     selectProduct: false,
+    allProductsList: true,
 }
 
 export const optionsReducer = (state = initialState, actions) => {
@@ -15,6 +16,7 @@ export const optionsReducer = (state = initialState, actions) => {
                 deleteProduct: false,
                 modificProduct: false,
                 selectProduct: false,
+                allProductsList: false
             };
         case DELETE:
             return {
@@ -22,6 +24,7 @@ export const optionsReducer = (state = initialState, actions) => {
                 deleteProduct: true,
                 modificProduct: false,
                 selectProduct: false,
+                allProductsList: false
             };
         case MODIFIC:
             return {
@@ -29,6 +32,7 @@ export const optionsReducer = (state = initialState, actions) => {
                 deleteProduct: false,
                 modificProduct: true,
                 selectProduct: false,
+                allProductsList: false
             };
         case SELECT:
             return {
@@ -36,6 +40,7 @@ export const optionsReducer = (state = initialState, actions) => {
                 deleteProduct: false,
                 modificProduct: false,
                 selectProduct: true,
+                allProductsList: false
             }
         case ALL:
             return {
@@ -43,6 +48,7 @@ export const optionsReducer = (state = initialState, actions) => {
                 deleteProduct: false,
                 modificProduct: false,
                 selectProduct: false,
+                allProductsList: true,
             }
         default:
             return state;

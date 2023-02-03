@@ -11,7 +11,7 @@ const CreateProduct = () => {
     const [productInput, setProductInput] = useState({
         Name: "",
         CodeProduct: "",
-        Price: 0,
+        Price: null,
         Status: "",
         TypeProduct: "",
         IdUser: user.idUser
@@ -65,19 +65,19 @@ const CreateProduct = () => {
                     onChange={(e) => handleChange(e)}
                     className="control_form_register"
                 />
-            </Form.Group>
-
-            <Form.Group controlId="formPrice">
-                <Form.Label className="label_form_register">Precio</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Ingrese su apellido"
-                    name="Price"
-                    value={productInput.Price}
-                    onChange={(e) => handleChange(e)}
-                    className="control_form_register"
+                </Form.Group>
+                <Form.Group controlId="formPrice">
+                    <Form.Label className="label_form_register">Precio</Form.Label>
+                    <Form.Control
+                        type="number"
+                        placeholder="Ingrese el precio"
+                        name="Price"
+                        value={productInput.Price}
+                        onChange={handleChange}
+                        className="control_form_register"
+                        step="0.01"
                     />
-            </Form.Group>
+                </Form.Group>
 
             <Form.Group controlId="formStatus">
                 <Form.Label className="label_form_register">Status del producto</Form.Label>
